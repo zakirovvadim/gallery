@@ -1,13 +1,49 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* базовая раскладка */
+body { margin: 0; font-family: system-ui, Arial, sans-serif; background: #f6f7f8; color:#111; }
+.wrap { min-height: 100vh; }
+.topbar { position: sticky; top:0; z-index:10; display:flex; align-items:center; gap:12px; padding:16px 20px; background:#fff; border-bottom:1px solid #e5e7eb; }
+.topbar h1 { margin:0; font-size:42px; font-weight:800; }
+.spacer { flex:1; }
+.btn { padding:6px 10px; border:1px solid #ddd; border-radius:10px; background:#fff; cursor:pointer; }
+.muted { color:#6b7280; font-size:14px; }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.layout { display:grid; grid-template-columns: 280px 1fr; gap:16px; padding:16px 20px; max-width:1280px; margin:0 auto; }
+.sidebar { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:10px; }
+
+.treeTitle { margin:6px 6px 10px; font-size:14px; font-weight:600; color:#374151; }
+.treeBlock { margin-bottom:6px; }
+.treeRow { width:100%; text-align:left; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:8px 10px; display:flex; align-items:center; gap:8px; cursor:pointer; }
+.treeRow.sub { margin-left:10px; }
+.treeRow.active { background:#f3f4f6; }
+.treeInner { margin-top:6px; }
+.treeDays { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 0 24px; }
+.day { border:1px solid #e5e7eb; border-radius:8px; background:#fff; padding:4px 8px; font-size:12px; cursor:pointer; }
+.day.active { background:#eef2ff; border-color:#c7d2fe; }
+.chev { width:14px; display:inline-block; color:#6b7280; }
+.count { margin-left:auto; font-size:12px; color:#6b7280; }
+
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap:12px; }
+.card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; overflow:hidden; cursor:pointer; }
+.card img { width:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
+.card figcaption { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 8px; font-size:12px; color:#555; }
+.name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%; }
+.empty { padding:24px; text-align:center; color:#666; }
+
+.lb { position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; padding:24px; z-index:50; }
+.lbInner { position:relative; width:min(1200px, 100%); }
+.lbInner img { width:100%; max-height:80vh; object-fit:contain; background:#000; }
+.lbBar { display:flex; gap:12px; align-items:center; justify-content:space-between; color:#111; background:#fff; padding:8px 12px; font-size:14px; }
+.lbClose { position:absolute; top:-42px; right:0; font-size:18px; color:#fff; background:transparent; border:none; cursor:pointer; }
+.lbNav { position:absolute; top:50%; transform:translateY(-50%); border:none; background:#fff; border-radius:10px; padding:6px 10px; cursor:pointer; }
+.lbNav.left { left:-8px; } .lbNav.right { right:-8px; }
+.truncate { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%; }
+
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+/* Лайтбокс: картинка не вылезает за экран и центрируется */
+.lbInner img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
