@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-
+const API = (process.env.REACT_APP_API_BASE || "").replace(/\/+$/, "");
 /** Мини-галерея с «папками по датам»
  *  - Берём фото из /api/photos (или мок, если API нет)
  *  - Парсим дату из takenAt или имени файла: YYYY[-_]?MM[-_]?DD([-_]HH[-_]?mm([-_]?ss)?)
@@ -19,7 +19,7 @@ export default function Gallery() {
     const [lbIndex, setLbIndex] = useState(null);
 
     useEffect(() => {
-        fetch("/api/photos")
+        fetch(`${API}/api/photos`)
             .then(r => r.ok ? r.json() : Promise.reject(r.status))
             .then(list => {
                 setPhotos(Array.isArray(list) ? list : []);
